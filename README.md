@@ -84,7 +84,7 @@ Combines related variables (fields) and functions (methods).
 **Creating Objects**
   ```cs
   Person person = new Person();
-  or
+  //or
   var person = new Person();
   person.Name = "John";
   person.Introduce(); //Hi, my name is John
@@ -100,7 +100,7 @@ numbers[0] = 1;
 numbers[1] = 2;
 numbers[3] = 3;
 
-or directly use object initialization syntax
+//or directly use object initialization syntax
 int[] numbers = new int[3] {1, 2, 3};
 ```
 
@@ -111,13 +111,13 @@ A sequence of characters.
 ```cs
 string name = "John";
 
-Using string concatenation
+//Using string concatenation
 string name = firstName + " " + lastName;
 
-Using string format
+//Using string format
 string name = string.Format({0} {1}, firstName, lastName);
 
-Using string join
+//Using string join
 var numbers = new int[3] {1, 2, 3};
 string list = string.Join(",", numbers); //1,2,3
 ```
@@ -132,7 +132,7 @@ name[0] = 'm'; //cannot be done as strings are immutable
 
 > Strings are Immutable. Once you create them, you cannot change them.
 
-
+### Escape Characters
 Char | Description
 -----|----------
  \n | New Line
@@ -140,3 +140,27 @@ Char | Description
  \\ | Backslash
  \' | Single Quotation Mark
  \" | Double Quotation Mark
+
+ ### Verbatim Strings
+ ```cs
+ string path = "c:\\projects\\csharp\\folder";
+ //using verbatim strings
+ string path = @"c:\projects\csharp\folder";
+ ```
+
+ ### Enums
+ A set of name/value pairs (constants).
+ ```cs
+public enum ShippingMethod {
+  RegularShipping = 1,
+  RegisteredMail = 2,
+  Express = 3
+}
+
+var method = ShippingMethod.Express;
+
+//We can also specify the type for enum
+public enum ShippingMethod : byte {
+  
+}
+``` 
