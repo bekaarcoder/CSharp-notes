@@ -8,17 +8,15 @@
 ## Primitive Types
 
 1. Integral Numbers
-
-- Byte
-- Short
-- Int
-- Long
+  - Byte
+  - Short
+  - Int
+  - Long
 
 2. Real Numbers
-
-- Float
-- Double
-- Decimal
+  - Float
+  - Double
+  - Decimal
 
 3. Character – char
 4. Boolean – bool
