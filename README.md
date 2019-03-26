@@ -7,19 +7,19 @@
 
 ## Primitive Types
 
-1. Integral Numbers
+- Integral Numbers
   - Byte
   - Short
   - Int
   - Long
 
-2. Real Numbers
+- Real Numbers
   - Float
   - Double
   - Decimal
 
-3. Character – char
-4. Boolean – bool
+- Character – char
+- Boolean – bool
 
 > Note – double is used as a default data type when using real numbers in C#.
 
