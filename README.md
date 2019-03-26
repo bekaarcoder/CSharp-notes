@@ -132,7 +132,7 @@ name[0] = 'm'; //cannot be done as strings are immutable
 
 > Strings are Immutable. Once you create them, you cannot change them.
 
-### Escape Characters
+**Escape Characters**
 Char | Description
 -----|----------
  \n | New Line
@@ -141,7 +141,7 @@ Char | Description
  \' | Single Quotation Mark
  \" | Double Quotation Mark
 
- ### Verbatim Strings
+ **Verbatim Strings**
  ```cs
  string path = "c:\\projects\\csharp\\folder";
  //using verbatim strings
@@ -161,6 +161,6 @@ var method = ShippingMethod.Express;
 
 //We can also specify the type for enum
 public enum ShippingMethod : byte {
-  
+
 }
 ``` 
