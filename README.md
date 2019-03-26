@@ -133,6 +133,7 @@ name[0] = 'm'; //cannot be done as strings are immutable
 > Strings are Immutable. Once you create them, you cannot change them.
 
 **Escape Characters**
+
 Char | Description
 -----|----------
  \n | New Line
