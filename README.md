@@ -80,3 +80,63 @@ Combines related variables (fields) and functions (methods).
     }
   }
   ```
+
+**Creating Objects**
+  ```cs
+  Person person = new Person();
+  or
+  var person = new Person();
+  person.Name = "John";
+  person.Introduce(); //Hi, my name is John
+  ```
+
+### Arrays
+An array is a data structure to store a collection of variables of the same type.
+
+**Declaring an array**
+```cs
+int[] numbers = new int[3];
+numbers[0] = 1;
+numbers[1] = 2;
+numbers[3] = 3;
+
+or directly use object initialization syntax
+int[] numbers = new int[3] {1, 2, 3};
+```
+
+### Strings
+A sequence of characters.
+
+**Creating strings**
+```cs
+string name = "John";
+
+Using string concatenation
+string name = firstName + " " + lastName;
+
+Using string format
+string name = string.Format({0} {1}, firstName, lastName);
+
+Using string join
+var numbers = new int[3] {1, 2, 3};
+string list = string.Join(",", numbers); //1,2,3
+```
+
+**String Elements**
+```cs
+string name = "John";
+char firstChar = name[0]; //J
+
+name[0] = 'm'; //cannot be done as strings are immutable
+```
+
+> Strings are Immutable. Once you create them, you cannot change them.
+
+
+Char | Description
+-----|----------
+ \n | New Line
+ \t | Tab
+ \\ | Backslash
+ \' | Single Quotation Mark
+ \" | Double Quotation Mark
