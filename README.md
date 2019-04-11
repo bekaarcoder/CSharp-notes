@@ -165,3 +165,202 @@ public enum ShippingMethod : byte {
 
 }
 ``` 
+
+## Arrays
+
+Represents a fixed number of variables of a particular type.
+
+**Type of Arrays**
+
+1. **Single Dimentional Arrays**
+    ```cs
+    var numbers = new int[5];
+    var numbers = new int[5]{1, 2, 3, 4, 5};
+    ```
+
+2. **Multi Dimentional Array**
+    - **Rectangular Array** - Number of columns for each rows are same.
+        ```cs
+        var matrix = new int[3, 5]; //3 rows and 5 columns
+        var matrix = new int[3, 5]{
+          {1, 2, 3, 4, 5},
+          {6, 7, 8, 9, 10},
+          {11, 12, 13, 14, 15}
+        };
+        ```
+    - **Jagged Array** - Number of columns for each rows are different.
+        ```cs
+        var array = new int[3][];
+
+        array[0] = new int[4];
+        array[1] = new int[5];
+        array[2] = new int[3];
+        ```
+
+## Array Properties and Methods
+
+```cs
+var numbers = new[] {3, 4, 5, 6, 7, 8, 9, 0};
+
+//Length
+Console.WriteLine(numbers.Length); // 8
+
+//IndexOf()
+var index = Array.IndexOf(numbers, 5)
+Console.WriteLine(index); // 2
+
+//Clear()
+Array.Clear(numbers, 0, 2);
+
+foreach(var n in numbers)
+  Console.WriteLine(n); // {0, 0, 5, 6, 7, 8, 9, 0}
+
+//Copy()
+int[] another = new int[3];
+Array.Copy(numbers, another, 3); // {3, 4, 5}
+
+// Sort()
+Array.Sort(numbers) // {0, 3, 4, 5, 6, 7, 8, 9}
+
+//Reverse()
+Array.Reverse(numbers) // {0, 9, 8, 7, 6, 5, 4, 3}
+```
+
+## Lists
+List clas can be used to create a collection of different types like int, string, etc. It can be resized dynamically.
+
+**Creating a List**
+
+```cs
+var numbers = new List<int>();
+var numbers = new List<int>() {1, 2, 3, 4, 5};
+```
+
+**Lists Methods**
+
+```cs
+var numbers = new List<int>() {1, 2, 3};
+
+numbers.Add(4); // {1, 2, 3, 4}
+numbers.AddRange(new int[3] {5, 6, 7});
+
+foreach(var number in numbers) {
+  Console.WriteLine(number);
+} // {1, 2, 3, 4, 5, 6, 7}
+
+Console.WriteLine(numbers.Count); // 7
+```
+
+## Working With Strings
+
+### Converting Strings to Numbers
+
+```cs
+string s = "1234";
+
+int i = int.Parse(s);
+int j = Convert.ToInt32(s);
+```
+
+### Converting Numbers to Strings
+
+```cs
+int i = 1234;
+
+string s = i.ToString(i); // "1234"
+string s = i.ToString("C"); // "$1,234.00", C is for Currency
+string s = i.ToString("C0"); // "$1,234" , C0 removes digits after decimal. To use 1 decimal place, use "C1".
+```
+
+## Working With Files
+
+**File** - provide static methods
+**FileInfo** - provide instance methods
+
+> Both provide methods for creating, copying, deleting, moving and opening of files.
+
+**Directory** - provide static methods
+**DirectoryInfo** - provide instance methods
+
+**Path**
+
+- GetDirectoryName()
+- GetFileName()
+- GetExtension()
+- GetTempPath()
+
+## Class
+A building block of an application.
+
+**Anatomy of a Class**
+
+- Data (represented by fields)
+- Behaviour (represented my methods/functions)
+
+|Post                                                      |
+|----------------------------------------------------------|
+|Title: string<Br>Description: string<Br>DateTime: DateTime|
+|Publish()<Br>Like()<Br>Comment(message)                   |
+
+## Object
+An instance of a class.
+
+### Declaring Classes
+
+```cs
+public class Post {
+  public string Title;
+
+  public void Publish() {
+    Console.WriteLine("Creating the post " + Title);
+  }
+}
+```
+
+### Creating And Using Objects
+
+```cs
+Post post = new Post();
+//or
+var post = new Post();
+
+post.Title = "My first post";
+post.Publish();
+```
+
+**Class Members**
+
+- Instance: accessible from an object.
+    ```cs
+    var person = new Person();
+    person.Introduce();
+    ```
+- Static: accessible from the class.
+    ```cs
+    Console.WriteLine("Hello");
+    ```
+
+## Constructor
+A method that is called when an instance of a class is created. It has the same name as of the class name.
+
+```cs
+public class Customer {
+  public Customer() {
+
+  }
+}
+```
+
+## Constructor Overloading
+It is a technique of creating multiple constructors with a different set of parameters and the different numbers of parameters.
+
+```cs
+public class Customer {
+  public Customer() {...}
+
+  public Customer(string name) { ... }
+
+  public Customer(int id , string name) { ... }
+}
+```
+
