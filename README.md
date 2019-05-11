@@ -364,3 +364,268 @@ public class Customer {
 }
 ```
 
+## Object Initializers
+A syntax for quickly initializing an object without the need to call one of its constructors. This is needed to avoid creating multiple constructors.
+
+Consider this simple Car class
+```cs
+public class Car {
+  public string Name {get; set;}
+  public string Color {get; set;}
+}
+```
+
+Typically, we will create a class instance and then set its properties. But with object initializers, we can pass the public properties values during when we are creating the object without explicitly invoking the Author class constructor
+```cs
+Car car = new Car() {
+  Name = "Audi",
+  Color = "Red"
+};
+```
+
+### Signature of a Method
+- Name
+- Number and types of parameter
+
+```cs
+public class Point {
+  public void Move(int x, int y) {}
+}
+```
+
+### Overloading Methods
+Having a method with the same name but different signatures
+
+```cs
+public class Point {
+  public void Move(int x, int y) {}
+  public void Move(Point newLocation) {}
+  public void Move(Point newLocation, int speed) {}
+}
+```
+
+## Access Modifiers
+A way to control access to a class and/or its members.
+
+There are 5 different access modifiers in C#:
+1. Private
+2. Protected
+3. Public
+4. Protected Internal
+5. Public
+
+> Private members are available only within the containing type.
+
+> Public members are available anywhere. There is no restriction.
+
+> Protected members are available, within the containing type and to the types that derive from the containing type.
+
+## Encapsulation
+The variables or data of a class are hidden from any other class and can be accessed only through  any member function of own class in which they are declared.
+> Encapsulation can be achived by declaring all the variables in a class as private and using C# properties in the class to set and get the values of variables.
+
+```cs
+public class Customer {
+  private int _id;
+  protected int key;
+
+  public int ID {
+    get { return _id ;}
+    set { _id = value ;}
+  }
+}
+
+public class CorporateCustomer : Customer {
+  public void PrintID() {
+    CorporateCustomer CC = new CorporateCustomer();
+    CC.key = 101; // key is accessible as CorporateCustomer is derived class of Customer 
+  }
+}
+
+public class MainClass {
+  private static void Main() {
+    Customer c1 = new Customer();
+    Console.WriteLine(c1._id); // Error, as _id is not accessible outside the Customer class due to its protection
+    Console.WriteLine(c1.key); // Error, as key is not accessible due to protection
+    Console.WriteLine(c1.ID); //This is accessible as ID is public;
+  }
+}
+```
+
+**Properties** - A class member that encapsulates a getter/setter for accessing a field.
+
+```cs
+public class Person {
+  private DateTime _birthdate;
+  public DateTime BirthDate {
+    get { return _birthdate }
+    set { _birthdate = value }
+  }
+}
+```
+
+**Auto-Implemented Properties**
+
+```cs
+public class Person {
+  public DateTime BirthDate { get; set; }
+}
+```
+
+## List Collection 
+
+A list class can be used to create a collection of any type. For example, we can create a list of integers, string and even complex types.
+
+The object stored in the list can be accessed by index.
+> Unlike arrays, list can grow in size automatically.
+
+```cs
+class UnderstandingList
+    {
+        public static void Main(string[] args)
+        {
+            Customr customer1 = new Customr()
+            {
+                ID = 101,
+                Name = "John",
+                Salary = 4000
+            };
+
+            Customr customer2 = new Customr()
+            {
+                ID = 102,
+                Name = "Jane",
+                Salary = 5000
+            };
+
+            Customr customer3 = new Customr()
+            {
+                ID = 103,
+                Name = "Joe",
+                Salary = 3000
+            };
+
+            List<Customr> customers = new List<Customr>(2);
+
+            customers.Add(customer1);
+            customers.Add(customer2);
+            customers.Add(customer3);
+
+            Customr c = customers[0];
+
+            Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", c.ID, c.Name, c.Salary);
+            //ID = 101, Name = John, Salary = 4000
+        }
+    }
+
+    public class Customr
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+    }
+```
+
+**Iterating over List using foreach**
+```cs
+foreach(Customr c in customers){
+  Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", c.ID, c.Name, c.Salary);
+}
+```
+
+**Iterating over List using for loop**
+```cs
+for(int i=0; i<customers.Count; i++){
+  Customr c = customers[i];
+  Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", c.ID, c.Name, c.Salary);
+}
+```
+
+**Insert data in List at a particular index**
+```cs
+customers.Insert(0, customer3);
+// this will insert the customer3 at zero index and push down other items in the List
+```
+
+**Get postion of an element in the list**
+```cs
+customers.IndexOf(customer3);
+// return 0
+
+customers.IndexOf(customer3, 1);
+// return 3. '1' in this case id the starting point
+
+customers.IndexOf(customer3, 1, 2)
+// Here it will start from 1 index and check 2 elements from the index 1
+```
+
+**List Methods**
+
+1. **Contains()** - returns True if an item exists in the list, else returns false.
+    ```cs
+    customers.Contains(customer3); // returns True
+    ```
+2. **Exists()** - Checks if an item exists in the list based on a condition.
+    ```cs
+    customers.Exists(cust => cust.Name.StartsWith("J")); // returns True
+    ```
+3. **Find()** - returns the first matching item from the List based on a condition.
+    ```cs
+    Customr f = customers.Find(cust => cust.Salary >= 4000);
+    Console.WriteLine("ID = {0}, Name = {1}", f.ID, f.Name);
+    // ID = 101, Name = John
+    ```
+4. **FindLast()** - returns the last matching item from the list based on a condition.
+    ```cs
+    Customr l = customers.FindLast(cust => cust.Salary >= 4000);
+    Console.WriteLine("ID = {0}, Name = {1}", l.ID, l.Name);
+    // ID = 102, Name = Jane
+    ```
+5. **FindAll()** - returns all the matching item from the list based on a condition.
+    ```cs
+    List<Customr> all = customers.FindAll(cust => cust.Salary >= 4000);
+    foreach(Customr c in customers){
+      Console.WriteLine("ID = {0}, Name = {1}", c.ID, c.Name);
+    }
+    // ID = 101, Name = John
+    // ID = 102, Name = Jane
+    ```
+6. **FindIndex()** - returns the first matching index from the list based on a condition.
+    ```cs
+    customers.FindIndex(cust => cust.Salary >= 4000); // return 1
+    ```
+7. **FindLastIndex()** - returns the last matching index from the list based on a condition.
+    ```cs
+    customers.FindLastIndex(cust => cust.Salary >= 4000); // return 2
+    ```
+
+**Convert an array to a List** - Using ToList() function
+
+```cs
+Customer[] customers = new Customer[3];
+customers[0] = customer1;
+customers[1] = customer2;
+customers[2] = customer3;
+
+List<Customer> customerList = customers.ToList();
+```
+
+**Convert a List to an array** - Using ToArray() function
+
+```cs
+List<Customer> customers = new List<Customer>();
+customers.Add(customer1);
+customers.Add(customer2);
+customers.Add(customer3);
+
+Customer[] customerArray = customers.ToArray();
+```
+
+8. **AddRange()** - Add another list of items to the end of the existing List.
+9. **GetRange()** - Get list of items from the List for the specified range. It expects 2 parameters, start index and the number of elements to be returned.
+10. **InsertRange()** - Insert another list of items to the list at specified index.
+11. **Remove()** - Removes the first matching item from the list.
+12. **RemoveAt()** - Removes the item at the specified index of the list.
+13. **RemoveAll()** - Removes all the items that matches the specified condition.
+14. **RemoveRange()** - Remove a range of elements from the list. It expects 2 parameters, start index and the number of elements to be removed.
+15. **Clear()** - Removes all the items from the list without specifying any condition.
