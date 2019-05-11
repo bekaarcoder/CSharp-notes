@@ -629,3 +629,71 @@ Customer[] customerArray = customers.ToArray();
 13. **RemoveAll()** - Removes all the items that matches the specified condition.
 14. **RemoveRange()** - Remove a range of elements from the list. It expects 2 parameters, start index and the number of elements to be removed.
 15. **Clear()** - Removes all the items from the list without specifying any condition.
+
+**Sorting a List of Simple Type**
+
+```cs
+List<int> numbers = new List<int> { 0, 3, 2, 6, 4, 5, 8, 7, 9 };
+numbers.Sort();
+
+List<string> names = new List<string> { "Andrew", "Sam", "Paul", "Michael", "Kelly" };
+names.Sort();
+```
+
+**Reverse a List of Simple Type**
+
+```cs
+List<int> numbers = new List<int> { 0, 3, 2, 6, 4, 5, 8, 7, 9 };
+numbers.Reverse();
+
+List<string> names = new List<string> { "Andrew", "Sam", "Paul", "Michael", "Kelly" };
+names.Reverse();
+```
+
+>When we implement the sort funnction on a complex type, user-defined classes like Customer, we will get a runtime invalid operation exception. We have to implement IComparable Interface to sort the list of complex type.
+
+>Sort function works on simple type because IComparable Interface is already implemented  for these types.
+
+**Sorting a List of Complex Types**
+
+To sort list of complex types, it has to implement IComparable Interface and provide implementation for CompareTo() method. CompareTo() returns an integer.
+
+```cs
+public class Customer : IComparable<Customer>
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public int Salary { get; set; }
+    public int CompareTo(Customer other)
+    {
+        //if (this.Salary > other.Salary)
+        //    return 1;
+        //else if (this.Salary < other.Salary)
+        //    return -1;
+        //else
+        //    return 0;
+
+        return this.Salary.CompareTo(other.Salary);
+    }
+}
+```
+
+We can also provide our own sort functionality by implementing the IComparer Interface.
+
+For example, if we want to sort the customers by name
+
+1. Implement IComparer Interface
+    ```cs
+    public class SortByName : IComparer<Customer>
+    {
+        public int Compare(Customer A, Customer B)
+        {
+            return A.Name.CompareTo(B.Name);
+        }
+    }
+    ```
+2. Pass an instance of that class that implements IComparer Interface, as an argument to the Sort() method.
+    ```cs
+    SortByName sortByName = new SortByName();
+    customers.Sort(sortByName);
+    ```
