@@ -8,12 +8,14 @@
 ## Primitive Types
 
 - Integral Numbers
+
   - Byte
   - Short
   - Int
   - Long
 
 - Real Numbers
+
   - Float
   - Double
   - Decimal
@@ -27,39 +29,43 @@
 - Declare a decimal `decimal number = 1.2m`
 
 **Overflowing** – Overflow happens when we perform an operation with a data type and the result of this operation exceeds the size of a storage for this datatype.
-  ```c#
-  byte number = 255;
-  number = number + 1 //this will output 0
-  ```
+
+```c#
+byte number = 255;
+number = number + 1 //this will output 0
+```
 
 ## Type Conversion
 
 1. **Implicit Type Conversion**
-  ```c#
-  byte b = 1;
-  int i = b;
 
-  int i = 1;
-  float f = i
-  ```
+```c#
+byte b = 1;
+int i = b;
+
+int i = 1;
+float f = i
+```
 
 2. **Explicit Type Conversion**
-  ```c#
-  int i = 1;
-  byte b = i //won't compile, so we use explicit type conversion
 
-  byte b = (byte)i;
-  ```
+```c#
+int i = 1;
+byte b = i //won't compile, so we use explicit type conversion
+
+byte b = (byte)i;
+```
 
 3. **Non-Compatible Types**
-  ```csharp
-  string s = "1";
-  int i = (int)s; //won't compile
 
-  int i = convert.ToInt32(s);
-  or
-  int i = int.Parse(s);
-  ```
+```csharp
+string s = "1";
+int i = (int)s; //won't compile
+
+int i = convert.ToInt32(s);
+or
+int i = int.Parse(s);
+```
 
 ## Non-Primitive Types
 
@@ -69,31 +75,36 @@
 4. Class
 
 ### Classes
+
 Combines related variables (fields) and functions (methods).
 
 **Declaring a class**
-  ```csharp
-  public class Person {
-    public string Name;
-    public void Introduce() {
-      Console.WriteLine("Hi, my name is " + Name);
-    }
+
+```csharp
+public class Person {
+  public string Name;
+  public void Introduce() {
+    Console.WriteLine("Hi, my name is " + Name);
   }
-  ```
+}
+```
 
 **Creating Objects**
-  ```cs
-  Person person = new Person();
-  //or
-  var person = new Person();
-  person.Name = "John";
-  person.Introduce(); //Hi, my name is John
-  ```
+
+```cs
+Person person = new Person();
+//or
+var person = new Person();
+person.Name = "John";
+person.Introduce(); //Hi, my name is John
+```
 
 ### Arrays
+
 An array is a data structure to store a collection of variables of the same type.
 
 **Declaring an array**
+
 ```cs
 int[] numbers = new int[3];
 numbers[0] = 1;
@@ -105,9 +116,11 @@ int[] numbers = new int[3] {1, 2, 3};
 ```
 
 ### Strings
+
 A sequence of characters.
 
 **Creating strings**
+
 ```cs
 string name = "John";
 
@@ -123,6 +136,7 @@ string list = string.Join(",", numbers); //1,2,3
 ```
 
 **String Elements**
+
 ```cs
 string name = "John";
 char firstChar = name[0]; //J
@@ -134,28 +148,31 @@ name[0] = 'm'; //cannot be done as strings are immutable
 
 **Escape Characters**
 
-Char | Description
------|----------
- \n | New Line
- \t | Tab
- \\ | Backslash
- \' | Single Quotation Mark
- \" | Double Quotation Mark
+| Char | Description           |
+| ---- | --------------------- |
+| \n   | New Line              |
+| \t   | Tab                   |
+| \\   | Backslash             |
+| \'   | Single Quotation Mark |
+| \"   | Double Quotation Mark |
 
- **Verbatim Strings**
- ```cs
- string path = "c:\\projects\\csharp\\folder";
- //using verbatim strings
- string path = @"c:\projects\csharp\folder";
- ```
+**Verbatim Strings**
 
- ### Enums
- A set of name/value pairs (constants).
- ```cs
+```cs
+string path = "c:\\projects\\csharp\\folder";
+//using verbatim strings
+string path = @"c:\projects\csharp\folder";
+```
+
+### Enums
+
+A set of name/value pairs (constants).
+
+```cs
 public enum ShippingMethod {
-  RegularShipping = 1,
-  RegisteredMail = 2,
-  Express = 3
+ RegularShipping = 1,
+ RegisteredMail = 2,
+ Express = 3
 }
 
 var method = ShippingMethod.Express;
@@ -164,7 +181,7 @@ var method = ShippingMethod.Express;
 public enum ShippingMethod : byte {
 
 }
-``` 
+```
 
 ## Arrays
 
@@ -173,29 +190,32 @@ Represents a fixed number of variables of a particular type.
 **Type of Arrays**
 
 1. **Single Dimentional Arrays**
-    ```cs
-    var numbers = new int[5];
-    var numbers = new int[5]{1, 2, 3, 4, 5};
-    ```
+
+   ```cs
+   var numbers = new int[5];
+   var numbers = new int[5]{1, 2, 3, 4, 5};
+   ```
 
 2. **Multi Dimentional Array**
-    - **Rectangular Array** - Number of columns for each rows are same.
-        ```cs
-        var matrix = new int[3, 5]; //3 rows and 5 columns
-        var matrix = new int[3, 5]{
-          {1, 2, 3, 4, 5},
-          {6, 7, 8, 9, 10},
-          {11, 12, 13, 14, 15}
-        };
-        ```
-    - **Jagged Array** - Number of columns for each rows are different.
-        ```cs
-        var array = new int[3][];
 
-        array[0] = new int[4];
-        array[1] = new int[5];
-        array[2] = new int[3];
-        ```
+   - **Rectangular Array** - Number of columns for each rows are same.
+     ```cs
+     var matrix = new int[3, 5]; //3 rows and 5 columns
+     var matrix = new int[3, 5]{
+       {1, 2, 3, 4, 5},
+       {6, 7, 8, 9, 10},
+       {11, 12, 13, 14, 15}
+     };
+     ```
+   - **Jagged Array** - Number of columns for each rows are different.
+
+     ```cs
+     var array = new int[3][];
+
+     array[0] = new int[4];
+     array[1] = new int[5];
+     array[2] = new int[3];
+     ```
 
 ## Array Properties and Methods
 
@@ -227,6 +247,7 @@ Array.Reverse(numbers) // {0, 9, 8, 7, 6, 5, 4, 3}
 ```
 
 ## Lists
+
 List clas can be used to create a collection of different types like int, string, etc. It can be resized dynamically.
 
 **Creating a List**
@@ -290,6 +311,7 @@ string s = i.ToString("C0"); // "$1,234" , C0 removes digits after decimal. To u
 - GetTempPath()
 
 ## Class
+
 A building block of an application.
 
 **Anatomy of a Class**
@@ -297,12 +319,13 @@ A building block of an application.
 - Data (represented by fields)
 - Behaviour (represented my methods/functions)
 
-|Post                                                      |
-|----------------------------------------------------------|
-|Title: string<Br>Description: string<Br>DateTime: DateTime|
-|Publish()<Br>Like()<Br>Comment(message)                   |
+| Post                                                       |
+| ---------------------------------------------------------- |
+| Title: string<Br>Description: string<Br>DateTime: DateTime |
+| Publish()<Br>Like()<Br>Comment(message)                    |
 
 ## Object
+
 An instance of a class.
 
 ### Declaring Classes
@@ -331,16 +354,17 @@ post.Publish();
 **Class Members**
 
 - Instance: accessible from an object.
-    ```cs
-    var person = new Person();
-    person.Introduce();
-    ```
+  ```cs
+  var person = new Person();
+  person.Introduce();
+  ```
 - Static: accessible from the class.
-    ```cs
-    Console.WriteLine("Hello");
-    ```
+  ```cs
+  Console.WriteLine("Hello");
+  ```
 
 ## Constructor
+
 A method that is called when an instance of a class is created. It has the same name as of the class name.
 
 ```cs
@@ -352,6 +376,7 @@ public class Customer {
 ```
 
 ## Constructor Overloading
+
 It is a technique of creating multiple constructors with a different set of parameters and the different numbers of parameters.
 
 ```cs
@@ -365,9 +390,11 @@ public class Customer {
 ```
 
 ## Object Initializers
+
 A syntax for quickly initializing an object without the need to call one of its constructors. This is needed to avoid creating multiple constructors.
 
 Consider this simple Car class
+
 ```cs
 public class Car {
   public string Name {get; set;}
@@ -376,6 +403,7 @@ public class Car {
 ```
 
 Typically, we will create a class instance and then set its properties. But with object initializers, we can pass the public properties values during when we are creating the object without explicitly invoking the Author class constructor
+
 ```cs
 Car car = new Car() {
   Name = "Audi",
@@ -384,6 +412,7 @@ Car car = new Car() {
 ```
 
 ### Signature of a Method
+
 - Name
 - Number and types of parameter
 
@@ -394,6 +423,7 @@ public class Point {
 ```
 
 ### Overloading Methods
+
 Having a method with the same name but different signatures
 
 ```cs
@@ -405,14 +435,16 @@ public class Point {
 ```
 
 ## Access Modifiers
+
 A way to control access to a class and/or its members.
 
 There are 5 different access modifiers in C#:
+
 1. Private
-2. Protected
-3. Public
-4. Protected Internal
-5. Public
+2. Public
+3. Protected
+4. Internal
+5. Protected Internal
 
 > Private members are available only within the containing type.
 
@@ -420,8 +452,105 @@ There are 5 different access modifiers in C#:
 
 > Protected members are available, within the containing type and to the types that derive from the containing type.
 
+> A member with internal access modifier is available anywhere within the containing assembly. It's a compile time error to access an internal member from outside the containing assembly.
+
+> Protected Internal members can be accessed by any code in the assembly in which it is declared, or from within a derived class in another assembly. It is a combination of protected and internal
+
+> By default, class follows internal access modifier.
+
+> We cannot declare a class as private, protected and protected internal.
+
+> By default, class members are Private.
+
+## Inheritance
+
+Inheritance allows code reuse. Code reuse can reduce time and errors.
+
+> We specify all the common fields, properties, methods in the base class, which allows reusability. In the derived class, we will only have fields, properties and methods that are specific to them.
+
+> C# does not support multiple class inheritance.
+
+```cs
+public class ParentClass {
+  public string name;
+  public void PrintName() {
+    Console.WriteLine(name);
+  }
+}
+
+public class BaseClass : ParentClass {
+  public string DOB;
+}
+```
+
+### Method Hiding
+
+In method hiding, we can hide the implementation of the methods of a base class from the derived class using the new keyword. In other words, we can redefine the method of the base class in the derived class by using the new keyword.
+
+```cs
+public class ParentClass {
+  public void PrintName() {
+    Console.WriteLine("Print name from parent");
+  }
+}
+
+public class BaseClass : ParentClass {
+  public void new PrintName() {
+    Console.WriteLine("Print name from base");
+  }
+}
+```
+
+## Polymorphism
+
+It allows us to invoke derived class methods through a base class reference during runtime.
+
+In the base class the method is declared virtual, and in the derived class we override the same method. The virtual keyword indicates the method can be overridden in any derived class.
+
+### Method Overriding
+
+Creating a method in the derived class with the same signature as a method in the base class is called a Method Overriding. It is one of the ways to achieve Runtime Polymorphism (Dynamic Polymorphism).
+
+```cs
+class base_class
+{
+    public virtual void gfg();
+}
+
+class derived_class : base_class
+{
+    public override void gfg();
+}
+
+class Main_Method
+{
+ static void Main()
+ {
+    derived d_class = new derived_class();
+    d.gfg();
+
+    base_class b = new derived_class();
+    b.gfg();
+ }
+}
+```
+
+### Types of Polymorphism
+
+1. **Static or Compile Time Polymorphism** - In this, which method is to be called is decided at compile-time only. Method Overloading is an example of this.
+
+2. **Dynamic or Runtime Polymorphism** - It is also known as method overridding. In this mechanism by which a call to an overridden function is resolved a runtime if a base class contains a method that is overridden
+
+### Difference between Method Hiding and Method Overridding
+
+**Method Overridding** - A base class reference variable pointing to the child class object, will invoke the overridden method in the child class.
+
+**Method Hiding** - A base class reference variable pointing to the child class object, will invoke the hidden method in the base class.
+
 ## Encapsulation
-The variables or data of a class are hidden from any other class and can be accessed only through  any member function of own class in which they are declared.
+
+The variables or data of a class are hidden from any other class and can be accessed only through any member function of own class in which they are declared.
+
 > Encapsulation can be achived by declaring all the variables in a class as private and using C# properties in the class to set and get the values of variables.
 
 ```cs
@@ -438,7 +567,7 @@ public class Customer {
 public class CorporateCustomer : Customer {
   public void PrintID() {
     CorporateCustomer CC = new CorporateCustomer();
-    CC.key = 101; // key is accessible as CorporateCustomer is derived class of Customer 
+    CC.key = 101; // key is accessible as CorporateCustomer is derived class of Customer
   }
 }
 
@@ -472,11 +601,12 @@ public class Person {
 }
 ```
 
-## List Collection 
+## List Collection
 
 A list class can be used to create a collection of any type. For example, we can create a list of integers, string and even complex types.
 
 The object stored in the list can be accessed by index.
+
 > Unlike arrays, list can grow in size automatically.
 
 ```cs
@@ -527,6 +657,7 @@ class UnderstandingList
 ```
 
 **Iterating over List using foreach**
+
 ```cs
 foreach(Customr c in customers){
   Console.WriteLine("ID = {0}, Name = {1}, Salary = {2}", c.ID, c.Name, c.Salary);
@@ -534,6 +665,7 @@ foreach(Customr c in customers){
 ```
 
 **Iterating over List using for loop**
+
 ```cs
 for(int i=0; i<customers.Count; i++){
   Customr c = customers[i];
@@ -542,12 +674,14 @@ for(int i=0; i<customers.Count; i++){
 ```
 
 **Insert data in List at a particular index**
+
 ```cs
 customers.Insert(0, customer3);
 // this will insert the customer3 at zero index and push down other items in the List
 ```
 
 **Get postion of an element in the list**
+
 ```cs
 customers.IndexOf(customer3);
 // return 0
@@ -562,42 +696,42 @@ customers.IndexOf(customer3, 1, 2)
 **List Methods**
 
 1. **Contains()** - returns True if an item exists in the list, else returns false.
-    ```cs
-    customers.Contains(customer3); // returns True
-    ```
+   ```cs
+   customers.Contains(customer3); // returns True
+   ```
 2. **Exists()** - Checks if an item exists in the list based on a condition.
-    ```cs
-    customers.Exists(cust => cust.Name.StartsWith("J")); // returns True
-    ```
+   ```cs
+   customers.Exists(cust => cust.Name.StartsWith("J")); // returns True
+   ```
 3. **Find()** - returns the first matching item from the List based on a condition.
-    ```cs
-    Customr f = customers.Find(cust => cust.Salary >= 4000);
-    Console.WriteLine("ID = {0}, Name = {1}", f.ID, f.Name);
-    // ID = 101, Name = John
-    ```
+   ```cs
+   Customr f = customers.Find(cust => cust.Salary >= 4000);
+   Console.WriteLine("ID = {0}, Name = {1}", f.ID, f.Name);
+   // ID = 101, Name = John
+   ```
 4. **FindLast()** - returns the last matching item from the list based on a condition.
-    ```cs
-    Customr l = customers.FindLast(cust => cust.Salary >= 4000);
-    Console.WriteLine("ID = {0}, Name = {1}", l.ID, l.Name);
-    // ID = 102, Name = Jane
-    ```
+   ```cs
+   Customr l = customers.FindLast(cust => cust.Salary >= 4000);
+   Console.WriteLine("ID = {0}, Name = {1}", l.ID, l.Name);
+   // ID = 102, Name = Jane
+   ```
 5. **FindAll()** - returns all the matching item from the list based on a condition.
-    ```cs
-    List<Customr> all = customers.FindAll(cust => cust.Salary >= 4000);
-    foreach(Customr c in customers){
-      Console.WriteLine("ID = {0}, Name = {1}", c.ID, c.Name);
-    }
-    // ID = 101, Name = John
-    // ID = 102, Name = Jane
-    ```
+   ```cs
+   List<Customr> all = customers.FindAll(cust => cust.Salary >= 4000);
+   foreach(Customr c in customers){
+     Console.WriteLine("ID = {0}, Name = {1}", c.ID, c.Name);
+   }
+   // ID = 101, Name = John
+   // ID = 102, Name = Jane
+   ```
 6. **FindIndex()** - returns the first matching index from the list based on a condition.
-    ```cs
-    customers.FindIndex(cust => cust.Salary >= 4000); // return 1
-    ```
+   ```cs
+   customers.FindIndex(cust => cust.Salary >= 4000); // return 1
+   ```
 7. **FindLastIndex()** - returns the last matching index from the list based on a condition.
-    ```cs
-    customers.FindLastIndex(cust => cust.Salary >= 4000); // return 2
-    ```
+   ```cs
+   customers.FindLastIndex(cust => cust.Salary >= 4000); // return 2
+   ```
 
 **Convert an array to a List** - Using ToList() function
 
@@ -650,9 +784,9 @@ List<string> names = new List<string> { "Andrew", "Sam", "Paul", "Michael", "Kel
 names.Reverse();
 ```
 
->When we implement the sort funnction on a complex type, user-defined classes like Customer, we will get a runtime invalid operation exception. We have to implement IComparable Interface to sort the list of complex type.
+> When we implement the sort funnction on a complex type, user-defined classes like Customer, we will get a runtime invalid operation exception. We have to implement IComparable Interface to sort the list of complex type.
 
->Sort function works on simple type because IComparable Interface is already implemented  for these types.
+> Sort function works on simple type because IComparable Interface is already implemented for these types.
 
 **Sorting a List of Complex Types**
 
@@ -683,17 +817,17 @@ We can also provide our own sort functionality by implementing the IComparer Int
 For example, if we want to sort the customers by name
 
 1. Implement IComparer Interface
-    ```cs
-    public class SortByName : IComparer<Customer>
-    {
-        public int Compare(Customer A, Customer B)
-        {
-            return A.Name.CompareTo(B.Name);
-        }
-    }
-    ```
+   ```cs
+   public class SortByName : IComparer<Customer>
+   {
+       public int Compare(Customer A, Customer B)
+       {
+           return A.Name.CompareTo(B.Name);
+       }
+   }
+   ```
 2. Pass an instance of that class that implements IComparer Interface, as an argument to the Sort() method.
-    ```cs
-    SortByName sortByName = new SortByName();
-    customers.Sort(sortByName);
-    ```
+   ```cs
+   SortByName sortByName = new SortByName();
+   customers.Sort(sortByName);
+   ```
